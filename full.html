@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Notice Board</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #notice-board {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 1rem;
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+    .widget {
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+    .full-height {
+      grid-row: span 2 / span 2;
+    }
+    .half-width {
+      grid-column: span 1 / span 1;
+    }
+    .flex-row {
+      display: flex;
+      flex-direction: row;
+    }
+    .flex-grow {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="notice-board">
+    <div id="google-slide" class="widget full-height">
+      <h2 class="text-lg font-semibold mb-2">Google Slide</h2>
+      <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ5dEg.../embed?start=false&loop=false&delayms=3000" frameborder="0" width="100%" height="100%"></iframe>
+    </div>
+    <div class="flex-row gap-2">
+      <div id="pomodoro-timer" class="widget flex-grow">
+        <h2 class="text-lg font-semibold mb-2">Pomodoro Timer</h2>
+        <div id="timer" class="text-2xl mb-4">
+          <span id="minutes">25</span>:<span id="seconds">00</span>
+        </div>
+        <button id="start-pomodoro" class="bg-blue-500 text-white px-4 py-2 rounded mr-2">Start</button>
+        <button id="reset-pomodoro" class="bg-red-500 text-white px-4 py-2 rounded">Reset</button>
+      </div>
+      <div id="poll" class="widget flex-grow">
+        <h2 class="text-lg font-semibold mb-2">Poll</h2>
+        <div id="poll-question" class="mb-4">What's your favorite programming language?</div>
+        <form id="poll-form"></form>
+      </div>
+    </div>
+    <div id="dgc" class="widget tall-widget">
+        <h2 class="text-lg font-semibold mb-2">Daily Growth Checklist</h2>
+        <ul id="checklist" class="list-disc pl-5 mb-4"></ul>
+        <input type="text" id="new-task" placeholder="New task" class="border px-2 py-1 mb-2">
+        <button id="add-task" class="bg-green-500 text-white px-4 py-2 rounded">Add</button>
+      </div>
+      <div id="announcements" class="widget">
+        <h2 class="text-lg font-semibold mb-2">Announcements</h2>
+        <marquee behavior="scroll" direction="left" class="block w-full">Your scrolling text here</marquee>
+      </div>
+      <div id="opportunity-board" class="widget tall-widget">
+        <h2 class="text-lg font-semibold mb-2">Opportunity Board</h2>
+        <ul id="opportunities" class="list-disc pl-5 mb-4"></ul>
+        <input type="text" id="new-opportunity" placeholder="New opportunity" class="border px-2 py-1 mb-2">
+        <button id="add-opportunity" class="bg-yellow-500 text-white px-4 py-2 rounded">Add</button>
+      </div>
+    <div id="google-calendar" class="widget full-height">
+      <h2 class="text-lg font-semibold mb-2">Google Calendar</h2>
+      <iframe src="https://calendar.google.com/calendar/embed?src=your_calendar_id&ctz=Your_Timezone" style="border: 0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
